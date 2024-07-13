@@ -1,4 +1,4 @@
-#version1
+# version1
 #This is a program written in python
 #This program simulates the game of rock, paper, scissors for 1 player against the computer
 #This code does not handle invalid inputs
@@ -25,7 +25,7 @@ while play_again == "yes":
     print("User wins")
   play_again = input("Do you want to play again? (yes or no): ").lower()
 
-
+# version2 with scoring that is saved and displayed
 # This Rock, Paper, Scissors program handles variations in lower or upper case inputs
 # This program does not handle invalid inputs
 
