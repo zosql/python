@@ -92,3 +92,44 @@ while play_again == "yes":
   play_again = input("Do you want to play again? (yes or no): ").lower()
   if play_again == "no":
     print("Great playing with you! See you again soon!")
+
+#version 4: introduce a prompt to run the program again only if the gameplay continue option is invalid
+# However the gameplay loop is stopped because of an invalid response.
+
+import random
+print("Welcome to Rock, Paper, Scissors!")
+print("")
+print("Following are the rules:")
+print("- Rock beats Scissors")
+print("- Paper beats Rock")
+print("- Scissors beats Paper")
+play_again = "yes"
+computer_score = 0
+user_score = 0
+while play_again == "yes":
+  choices = ["rock", "paper", "scissors"]
+  computer_chooses = random.choice(choices)
+  user_chooses = input("Enter your choice (rock, paper or scissors): ").lower()
+  if user_chooses == computer_chooses:
+    print(f"The computer chose: {computer_chooses}")
+    print("It's a tie!")
+  elif (user_chooses == "rock" and computer_chooses == "paper") or (user_chooses == "scissors" and computer_chooses == "rock") or (user_chooses == "paper" and computer_chooses == "scissors"):
+    print(f"The computer chose: {computer_chooses}")
+    print("Computer wins")
+    computer_score += 1      
+  elif (computer_chooses == "rock" and user_chooses == "paper") or (computer_chooses == "scissors" and user_chooses == "rock") or (computer_chooses == "paper" and user_chooses == "scissors"):
+    print(f"The computer chose: {computer_chooses}")
+    print("User wins")
+    user_score += 1
+  else:
+    print("Invalid choice")
+  print(f"User's score is {user_score}")
+  print(f"Computer's score is {computer_score}")
+  play_again = input("Do you want to play again? (yes or no): ").lower()
+  if play_again == "no":
+    print("Great playing with you! See you again soon!")
+  print("Run the program again to restart the game.")
+
+#version5
+# keep gameplay loop on and let user not exit the gameplay despite invalid choice.
+
