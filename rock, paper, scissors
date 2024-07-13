@@ -1,9 +1,8 @@
 # version1
-#This is a program written in python
-#This program simulates the game of rock, paper, scissors for 1 player against the computer
-#This code does not handle invalid inputs
-#This code handles inputs in lower or upper-case characters
-#This game can be played on a loop
+# This is a program written in python that simulates the game of rock, paper, scissors for 1 player against a computer
+# This code does not handle invalid inputs
+# This code handles inputs in lower or upper-case characters and can be played on a loop
+
 import random
 print("Welcome to Rock, Paper, Scissors!")
 print("")
@@ -25,39 +24,71 @@ while play_again == "yes":
     print("User wins")
   play_again = input("Do you want to play again? (yes or no): ").lower()
 
-# version2 with scoring that is saved and displayed
-# This Rock, Paper, Scissors program handles variations in lower or upper case inputs
-# This program does not handle invalid inputs
+# version2
+# Want code to handle invalid responses
+# Perhaps the way is to add invalidity to the if-else statements
 
 import random
-
 print("Welcome to Rock, Paper, Scissors!")
 print("")
-print("The rules are simple:")
+print("Following are the rules:")
 print("- Rock beats Scissors")
 print("- Paper beats Rock")
 print("- Scissors beats Paper")
-print("")
-
-user_score = 0
-computer_score = 0
 play_again = "yes"
 while play_again == "yes":
-  user_choice = input("Enter your choice (rock, paper or scissors): ").lower()
   choices = ["rock", "paper", "scissors"]
-  computer_choice = random.choice(choices)
-  print("")
-  if user_choice == computer_choice:
-    print("It's a tie")
-    computer_score += 0.5
-    user_score += 0.5
-  elif  (user_choice == "rock" and computer_choice == "paper") or (user_choice == "paper" and computer_choice == "scissors") or user_choice == "scissors" and computer_choice == "rock":
-    computer_score += 1
-    print(f"Computer wins ({computer_choice}). You lose ({user_choice}).")
+  computer_chooses = random.choice(choices)
+  user_chooses = input("Enter your choice (rock, paper or scissors): ").lower()
+  if user_chooses == computer_chooses:
+    print(f"The computer chose: {computer_chooses}")
+    print("It's a tie!")
+  elif (user_chooses == "rock" and computer_chooses == "paper") or (user_chooses == "scissors" and computer_chooses == "rock") or (user_chooses == "paper" and computer_chooses == "scissors"):
+    print(f"The computer chose: {computer_chooses}")
+    print("Computer wins")      
+  elif (computer_chooses == "rock" and user_chooses == "paper") or (computer_chooses == "scissors" and user_chooses == "rock") or (computer_chooses == "paper" and user_chooses == "scissors"):
+    print(f"The computer chose: {computer_chooses}")
+    print("User wins")
   else:
+    print("Invalid choice")
+  play_again = input("Do you want to play again? (yes or no): ").lower()
+  if play_again == "no":
+    print("Great playing with you! See you again soon!")
+
+#version 2 handles invalid choice between rock, paper, scissors and continues the game loop
+#version 2 fails to prompt a valid choice for continuing the game
+
+# version3 with scoring that is saved and displayed after each play with all features from the previous version
+
+import random
+print("Welcome to Rock, Paper, Scissors!")
+print("")
+print("Following are the rules:")
+print("- Rock beats Scissors")
+print("- Paper beats Rock")
+print("- Scissors beats Paper")
+play_again = "yes"
+computer_score = 0
+user_score = 0
+while play_again == "yes":
+  choices = ["rock", "paper", "scissors"]
+  computer_chooses = random.choice(choices)
+  user_chooses = input("Enter your choice (rock, paper or scissors): ").lower()
+  if user_chooses == computer_chooses:
+    print(f"The computer chose: {computer_chooses}")
+    print("It's a tie!")
+  elif (user_chooses == "rock" and computer_chooses == "paper") or (user_chooses == "scissors" and computer_chooses == "rock") or (user_chooses == "paper" and computer_chooses == "scissors"):
+    print(f"The computer chose: {computer_chooses}")
+    print("Computer wins")
+    computer_score += 1      
+  elif (computer_chooses == "rock" and user_chooses == "paper") or (computer_chooses == "scissors" and user_chooses == "rock") or (computer_chooses == "paper" and user_chooses == "scissors"):
+    print(f"The computer chose: {computer_chooses}")
+    print("User wins")
     user_score += 1
-    print(f"You win ({user_choice}). Computer loses ({computer_choice}).") 
-  print(f"Computer's Score: {computer_score}")
-  print(f"User's Score: {user_score}")
-  print("")
-  play_again = input("Do you want to play again? (yes/no): ").lower()
+  else:
+    print("Invalid choice")
+  print(f"User's score is {user_score}")
+  print(f"Computer's score is {computer_score}")
+  play_again = input("Do you want to play again? (yes or no): ").lower()
+  if play_again == "no":
+    print("Great playing with you! See you again soon!")
